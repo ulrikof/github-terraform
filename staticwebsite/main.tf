@@ -27,25 +27,17 @@ resource "azurerm_storage_account" "uo_sa_web" {
   account_replication_type = "LRS"
 
   static_website {
-    index_document = "index.html"
+    index_document = var.index_document
   }
 }
 
-# Ensure the $web container exists
-resource "azurerm_storage_container" "web_container" {
-  name                  = "$web"
-  storage_account_name  = azurerm_storage_account.uo_sa_web.name
-  container_access_type = "blob"
-}
-
-# Create the blob for the index.html
 resource "azurerm_storage_blob" "uo_index_html" {
-  name                   = "index.html"
+  name                   = var.index_document
   storage_account_name   = azurerm_storage_account.uo_sa_web.name
-  storage_container_name = azurerm_storage_container.web_container.name
+  storage_container_name = "$web"
   type                   = "Block"
   content_type           = "text/html"
-  source_content         = "${var.source_content}${local.web_suffix}"
+  source_content         = "${var.source_content}${local.web_suffix}" 
 }
 
 output "primary_web_endpoint" {
