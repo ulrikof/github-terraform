@@ -10,7 +10,7 @@ variable "location" {
 
 variable "sa_name" {
   type    = string
-  default = "uo1sa"
+  default = "uosa"
 }
 
 variable "source_content" {
