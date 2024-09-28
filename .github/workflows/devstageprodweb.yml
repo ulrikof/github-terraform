@@ -38,9 +38,13 @@ jobs:
         run: terraform apply -auto-approve
         working-directory: ${{ env.WORKING_DIR }}
 
-      - name: Test dev
-        run: curl $(terraform output -raw primary_web_endpoint)
+      - name: Get primary web endpoint
+        id: get_web_endpoint
+        run: echo "primary_web_endpoint=$(terraform output -raw primary_web_endpoint)" >> $GITHUB_ENV
         working-directory: ${{ env.WORKING_DIR }}
+
+      - name: Test dev
+        run: curl ${{ env.primary_web_endpoint }}
 
   stage_prod:
     needs: dev_stage
