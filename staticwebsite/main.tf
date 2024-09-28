@@ -43,3 +43,5 @@ resource "azurerm_storage_blob" "uo_index_html" {
 output "primary_web_endpoint" {
   value = azurerm_storage_account.uo_sa_web.primary_web_endpoint
 }
+
+# Apply
