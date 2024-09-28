@@ -1,6 +1,6 @@
 variable "rg_name" {
   type    = string
-  default = "uo_rg_staticwebsite_2"
+  default = "uo_rg_staticwebsite"
 }
 
 variable "location" {
