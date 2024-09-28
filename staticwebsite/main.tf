@@ -2,7 +2,7 @@ locals {
   workspace_suffix = terraform.workspace == "default" ? "" : "${terraform.workspace}"
 
   rg_name    = terraform.workspace == "default" ? "${var.rg_name}" : "${var.rg_name}-${terraform.workspace}"
-  sa_name    = terraform.workspace == "default" ? "${var.sa_name}" : "${var.sa_name}-${terraform.workspace}"
+  sa_name    = terraform.workspace == "default" ? "${var.sa_name}" : "${var.sa_name}${terraform.workspace}"
   web_suffix = "<h1>${terraform.workspace}</h1>"
 }
 
