@@ -15,7 +15,7 @@ variable "sa_name" {
 
 variable "source_content" {
   type    = string
-  default = "<h1>Web page created with Terraform</h1>"
+  default = "<h1>Web page created with Terraform - CI/CD</h1>"
 }
 variable "index_document" {
   type = string
