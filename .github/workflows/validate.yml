@@ -1,42 +1,42 @@
-# This is a basic workflow to help validate your Terraform configuration
-
 name: Validate Infrastructure
 
-# Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events
   push:
     branches-ignore:
-      - "main"
+      - 'main'
     paths:
-      - "module07/demo-infra/**"
+      - 'module07/demo-infra/**'
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "validate"
   terraform:
-    name: "Validate"
-    # The type of runner that the job will run on
+    name: 'Validate'
     runs-on: ubuntu-latest
-
+    
     env:
       ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-      WORKING_DIR: ./module07/demo-infra
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+      WORKING_DIR: ./course materials/module07/demo-infra
+      
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4.1.1
+      # Checkout the repository to the runner
+      - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
+      # Install Terraform
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.6 # Specify the desired Terraform version
+
+      # Initialize Terraform
       - name: Terraform init
         id: init
         run: terraform init
         working-directory: ${{ env.WORKING_DIR }}
 
+      # Validate the Terraform configuration
       - name: Terraform validate
         id: validate
         run: terraform validate
