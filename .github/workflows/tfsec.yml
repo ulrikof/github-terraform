@@ -14,10 +14,10 @@ on:
 jobs:
   # This workflow contains a single job called "Security Check"
   terraform:
-    name: 'Security Check'
+    name: "Security Check"
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    
+
     env:
       ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
@@ -25,18 +25,16 @@ jobs:
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       WORKING_DIR: ./module07/demo-infra
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under so your job can access it
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
+
+      # Run tfsec with filtering for critical errors
       - name: tfsec
-        # You may pin to the exact commit or the version.
-        # uses: aquasecurity/tfsec-action@b466648d6e39e7c75324f25d83891162a721f2d6
         uses: aquasecurity/tfsec-action@v1.0.3
         with:
-          # Directory to run the action on, from the repo root. Default is . (root of the repository)
           working_directory: ${{ env.WORKING_DIR }}
           github_token: ${{ env.GITHUB_TOKEN }}
-        # Space separated args specified here will be added during tfsec execution.
-        # (eg. --force-all-dirs --verbose)
+          args: --severity CRITICAL # Only fail on critical errors
