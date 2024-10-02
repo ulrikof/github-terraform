@@ -36,7 +36,10 @@ resource "azurerm_linux_virtual_machine" "linux_vm_01" {
 
   admin_ssh_key {
     username   = data.azurerm_key_vault_secret.username.value
-    public_key = file("~/.ssh/id_rsa.pub")
+   # public_key = file("~/.ssh/id_rsa.pub")
+   # Placeholder to resolve validate on github, should be replaced with a key that can be stored as a secret,
+   # but as this is not the porpouse of this module the placeholder wil work to avoid errors.
+   public_key = "placeholder!"
   }
 
   os_disk {
