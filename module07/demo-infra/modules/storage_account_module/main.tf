@@ -20,6 +20,7 @@ resource "azurerm_storage_account" "sa_01" {
   location                 = var.location
   account_tier             = "Standard"
   account_replication_type = "GRS"
+  min_tls_version          = "TLS1_2"
 }
 
 # Automatically creates the amount of storage containers defined by the variable "var.amount_of_storage_containers"
