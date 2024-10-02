@@ -53,4 +53,3 @@ module "linux_vm" {
   kv_secret_password_name = module.key_vault.kv_secret_password_name
 }
 
-#
