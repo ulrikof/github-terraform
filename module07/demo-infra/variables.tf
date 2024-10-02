@@ -71,7 +71,7 @@ variable "amount_of_storage_containers" {
 variable "linux_vm_01_name" {
   type        = string
   description = "Name of linux VM 01"
-  default = "uo-NIC-02"
+  default = "uo-NIC-03"
 }
 
 variable "linux_vm_01_nic_name" {
