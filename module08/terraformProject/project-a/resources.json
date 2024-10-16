@@ -1,0 +1,32 @@
+[
+  {
+    "changedTime": "2024-10-16T13:26:15.320738+00:00",
+    "createdTime": "2024-10-16T13:15:54.447562+00:00",
+    "extendedLocation": null,
+    "id": "/subscriptions/30ee9279-e76e-409d-8973-00c9792f6bcb/resourceGroups/uo-rg-demo-project-a/providers/Microsoft.Storage/storageAccounts/uosademo12364s",
+    "identity": {
+      "principalId": null,
+      "tenantId": null,
+      "type": "None",
+      "userAssignedIdentities": null
+    },
+    "kind": "StorageV2",
+    "location": "westeurope",
+    "managedBy": null,
+    "name": "uosademo12364s",
+    "plan": null,
+    "properties": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "uo-rg-demo-project-a",
+    "sku": {
+      "capacity": null,
+      "family": null,
+      "model": null,
+      "name": "Standard_LRS",
+      "size": null,
+      "tier": "Standard"
+    },
+    "tags": {},
+    "type": "Microsoft.Storage/storageAccounts"
+  }
+]
