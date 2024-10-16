@@ -23,11 +23,12 @@ resource "azurerm_key_vault" "key_vault" {
       "Recover"
     ]
   }
+
   # network_acls {
   #   bypass         = "AzureServices"
   #   default_action = "Deny"
   # }
-}
+
 
 # Secret containing the username used by linux vm 01
 resource "azurerm_key_vault_secret" "vm_username" {
